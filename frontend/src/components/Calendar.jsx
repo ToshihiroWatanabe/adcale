@@ -31,6 +31,7 @@ import { ReactComponent as QiitaIcon } from "images/qiita.svg";
 import { ReactComponent as ZennIcon } from "images/zenn.svg";
 import { ReactComponent as HatenaBlogIcon } from "images/hatenablog.svg";
 import { ReactComponent as NoteIcon } from "images/note.svg";
+import { ReactComponent as NotionIcon } from "images/notion.svg";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -372,7 +373,7 @@ const Calendar = (props) => {
                               </IconButton>
                             )}
                             {schedule.articleUrl.match(
-                              /.*\.hatenablog.jp\/.+/
+                              /.*\.hatenablog.\/.+/
                             ) && (
                               <IconButton size="small">
                                 <a
@@ -406,6 +407,29 @@ const Calendar = (props) => {
                                   rel="noreferrer"
                                 >
                                   <NoteIcon
+                                    style={{
+                                      height: "1.3rem",
+                                      width: "1.3rem",
+                                      objectFit: "cover",
+                                      objectPosition: "70% 70%",
+                                      marginTop: "0.3rem",
+                                    }}
+                                  />
+                                </a>
+                              </IconButton>
+                            )}
+                            {schedule.articleUrl.match(/.*notion.so\/.+/) && (
+                              <IconButton size="small">
+                                <a
+                                  href={
+                                    schedule.articleUrl.match(/https?:\/\/.*/)
+                                      ? schedule.articleUrl
+                                      : "http://" + schedule.articleUrl
+                                  }
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  <NotionIcon
                                     style={{
                                       height: "1.3rem",
                                       width: "1.3rem",
