@@ -24,6 +24,7 @@ import ScheduleService from "services/Schedule.service";
 import FetchService from "services/Fetch.service";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useTheme } from "@emotion/react";
+import axios from "axios";
 
 /** デフォルトの予定 */
 const defaultSchedule = {
@@ -211,7 +212,25 @@ const FormDialog = (props) => {
   const onAuthorUrlChange = (e) => {
     setAuthorUrlHelperText("");
     setAuthorUrl(e.target.value);
-    if (authorName === "" && e.target.value.match(/.+\..{2,}/)) {
+    // TwitterのユーザーのURLの場合
+    if (authorName === "" && e.target.value.match(/.*twitter.com\//)) {
+      // CORSで弾かれる
+      axios
+        .get(
+          "https://api.twitter.com/2/users/by/username/WataToshihiro?user.fields=profile_image_url",
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            setAuthorName(res.data.name);
+          }
+        });
+    } else if (authorName === "" && e.target.value.match(/.+\..{2,}/)) {
       // ページタイトルを取得する
       setIsAuthorNameInFetching(true);
       const url = e.target.value.match(/https?:\/\/.*/)
@@ -253,7 +272,7 @@ const FormDialog = (props) => {
             fullWidth
             variant="standard"
             value={articleTitle}
-            error={articleTitleHelperText}
+            error={articleTitleHelperText !== ""}
             helperText={articleTitleHelperText}
             onChange={(e) => {
               setArticleTitleHelperText("");
@@ -284,7 +303,7 @@ const FormDialog = (props) => {
             fullWidth
             variant="standard"
             value={articleUrl}
-            error={articleUrlHelperText}
+            error={articleUrlHelperText !== ""}
             helperText={articleUrlHelperText}
             onChange={onArticleUrlChange}
             InputProps={{
@@ -314,7 +333,7 @@ const FormDialog = (props) => {
             fullWidth
             variant="standard"
             value={authorName}
-            error={authorNameHelperText}
+            error={authorNameHelperText !== ""}
             helperText={authorNameHelperText}
             onChange={(e) => {
               setAuthorNameHelperText("");
@@ -345,7 +364,7 @@ const FormDialog = (props) => {
             fullWidth
             variant="standard"
             value={authorUrl}
-            error={authorUrlHelperText}
+            error={authorUrlHelperText !== ""}
             helperText={authorUrlHelperText}
             onChange={onAuthorUrlChange}
             InputProps={{
