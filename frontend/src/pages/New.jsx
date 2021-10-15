@@ -75,7 +75,7 @@ const New = (props) => {
         .catch((res) => {
           setIsInCreating(false);
           setIsCreateButtonDisabled(false);
-          setCreateButtonHelperText("通信に失敗しました。");
+          setCreateButtonHelperText("作成に失敗しました。");
         });
     }
   };

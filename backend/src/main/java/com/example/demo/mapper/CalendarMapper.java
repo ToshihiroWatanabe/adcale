@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface CalendarMapper {
 
-    @Select("select * from calendars where id = #{id}")
+    @Select("select * from calendars where id = #{id} AND deleted_at IS NULL")
     public Calendar findById(String id);
 
     @Insert("insert into calendars (id, auth_key, title, start_at, end_at) values (#{id}, #{authKey}, #{title}, #{startAt}, #{endAt});")

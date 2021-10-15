@@ -15,10 +15,10 @@ import com.example.demo.model.Schedule;
 @Mapper
 public interface ScheduleMapper {
 
-    @Select("select * from schedules where calendar_id = #{calendarId}")
+    @Select("select * from schedules where calendar_id = #{calendarId} AND deleted_at IS NULL")
     public List<Schedule> findByCalendarId(String calendarId);
 
-    @Select("select * from schedules where id = #{id}")
+    @Select("select * from schedules where id = #{id} AND deleted_at IS NULL")
     public Schedule findById(String id);
 
     @Insert("insert into schedules(id, calendar_id, date, article_title, article_url, author_name, author_url) values (#{id}, #{calendarId}, #{date}, #{articleTitle}, #{articleUrl}, #{authorName}, #{authorUrl})")
