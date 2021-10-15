@@ -13,8 +13,8 @@ import StaticDateRangePickerDemo from "components/StaticDateRangePickerDemo";
 import { CALENDAR_TITLE_MAX } from "utils/constants";
 import CalendarService from "services/Calendar.service";
 import { format } from "date-fns";
-import { Redirect } from "react-router";
 import { makeStyles } from "@mui/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +34,6 @@ const New = (props) => {
   const [titleHelperText, setTitleHelperText] = useState("");
   const [dateRange, setDateRange] = useState([null, null]);
   const [dateRangeHelperText, setDateRangeHelperText] = useState("");
-  const [isCreated, setIsCreated] = useState(false);
   const [calendarId, setCalendarId] = useState("");
   const [calendarAuthKey, setCalendarAuthKey] = useState("");
   const theme = useTheme();
@@ -69,7 +68,7 @@ const New = (props) => {
           if (res.status === 200) {
             setCalendarId(res.data.id);
             setCalendarAuthKey(res.data.authKey);
-            setIsCreated(true);
+            document.getElementById("linkToView").click();
           }
         })
         .catch((res) => {
@@ -148,11 +147,27 @@ const New = (props) => {
             {isInCreating && <CircularProgress />}
           </div>
           <Typography color="red">{createButtonHelperText}</Typography>
-          {isCreated ? (
-            <Redirect
-              to={"/view/" + calendarId + "?authkey=" + calendarAuthKey}
-            />
-          ) : null}
+          {/* 閲覧・編集画面へのリンク */}
+          {/* <Link
+            to={"/view/" + calendarId + "?authkey=" + calendarAuthKey}
+            className="hidden"
+            id="linkToView"
+          ></Link> */}
+          <a
+            href={
+              window.location.protocol +
+              "//" +
+              window.location.host +
+              "/view/" +
+              calendarId +
+              "?authkey=" +
+              calendarAuthKey
+            }
+            className="hidden"
+            id="linkToView"
+          >
+            ▫
+          </a>
         </Container>
       </div>
     </Fragment>
