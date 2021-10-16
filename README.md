@@ -49,13 +49,13 @@ MYSQL_URL|mysql://**ホスト名**:**ポート**/**データベース名**
 MYSQL_USERNAME|データベースに接続するユーザー名
 MYSQL_PASSWORD|データベースに接続するユーザーのパスワード
 
-### Spring Bootテスト用
+<!-- ### Spring Bootテスト用
 
 キー|説明
 ---|---
 MYSQL_TEST_URL|mysql://**ホスト名**:**ポート**/**データベース名**
 MYSQL_TEST_USERNAME|データベースに接続するユーザー名
-MYSQL_TEST_PASSWORD|データベースに接続するユーザーのパスワード
+MYSQL_TEST_PASSWORD|データベースに接続するユーザーのパスワード -->
 
 ### React用
 
