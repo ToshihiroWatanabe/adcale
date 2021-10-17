@@ -47,7 +47,7 @@ public class CalendarControllerTest {
     @DisplayName("createのテスト")
     class Create {
         @Test
-        public void createFalse() throws Exception {
+        public void create404() throws Exception {
             mockMvc.perform(post("/")).andExpect(status().isNotFound());
         }
 
