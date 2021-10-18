@@ -106,7 +106,7 @@ public class CalendarMapperTest {
 
         @Test
         @DisplayName("新規作成に成功してtrueを返す事")
-        void success() {
+        void succeed() {
             Calendar calendar = new Calendar();
             calendar.setId("00000000-0000-0000-0000-000000000000");
             calendar.setAuthKey("00000000-0000-0000-0000-000000000000");

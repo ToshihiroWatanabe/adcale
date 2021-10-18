@@ -134,7 +134,7 @@ public class ScheduleMapperTest {
 
         @Test
         @DisplayName("成功するとtrueが返される事")
-        void success() {
+        void succeed() {
             Schedule schedule = new Schedule();
             schedule.setId(UUID.randomUUID().toString());
             schedule.setCalendarId("18a3a021-076a-41cb-8be2-b0727c63863d");
@@ -164,7 +164,7 @@ public class ScheduleMapperTest {
 
         @Test
         @DisplayName("成功するとtrueが返される事")
-        void success() {
+        void succeed() {
             Schedule schedule = new Schedule();
             schedule.setId("abf09a97-58fa-bf51-2975-4544f4a5d770");
             schedule.setCalendarId("18a3a021-076a-41cb-8be2-b0727c63863d");

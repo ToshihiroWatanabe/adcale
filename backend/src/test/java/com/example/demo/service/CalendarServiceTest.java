@@ -32,7 +32,7 @@ public class CalendarServiceTest {
 
         @Test
         @DisplayName("成功")
-        void success() {
+        void succeed() {
             Calendar calendar = new Calendar();
             calendar.setId("00000000-0000-0000-0000-000000000000");
             Mockito.when(calendarMapper.findById("00000000-0000-0000-0000-000000000000")).thenReturn(calendar);
@@ -57,7 +57,7 @@ public class CalendarServiceTest {
     public class Auth {
         @Test
         @DisplayName("成功")
-        void success() {
+        void succeed() {
             Calendar calendar = new Calendar();
             calendar.setId("00000000-0000-0000-0000-000000000000");
             calendar.setAuthKey("00000000-0000-0000-0000-000000000000");

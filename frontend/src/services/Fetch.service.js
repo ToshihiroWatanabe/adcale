@@ -5,7 +5,7 @@ import http from "http-common";
  */
 class FetchService {
   fetch(url) {
-    return http.get("/fetch/?url=" + url);
+    return http.get("/fetch?url=" + url);
   }
 }
 

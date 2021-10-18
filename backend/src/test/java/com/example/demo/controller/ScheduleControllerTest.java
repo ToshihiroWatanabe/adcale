@@ -56,7 +56,7 @@ public class ScheduleControllerTest {
 
         @Test
         @DisplayName("成功")
-        void success() throws Exception {
+        void succeed() throws Exception {
             String calendarId = "00000000-0000-0000-0000-000000000000";
             Mockito.when(scheduleService.findByCalendarId("00000000-0000-0000-0000-000000000000"))
                     .thenReturn(List.of());
@@ -79,7 +79,7 @@ public class ScheduleControllerTest {
         @Disabled
         @Test
         @DisplayName("成功")
-        void success() throws Exception {
+        void succeed() throws Exception {
             ScheduleCreateRequest request = new ScheduleCreateRequest();
             request.setCalendarId("00000000-0000-0000-0000-000000000000");
             request.setArticleTitle("");
@@ -111,7 +111,7 @@ public class ScheduleControllerTest {
         @Disabled
         @Test
         @DisplayName("成功")
-        void success() {
+        void succeed() {
 
         }
     }

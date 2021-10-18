@@ -23,7 +23,7 @@ public class FetchController {
      * @param url http(s)://を除いたURL
      * @return
      */
-    @GetMapping("/")
+    @GetMapping("")
     public String fetch(@RequestParam String url) {
         try {
             Document doc = Jsoup.connect("http://" + url).get();

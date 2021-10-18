@@ -39,7 +39,7 @@ public class ScheduleServiceTest {
     public class FindByCalendarId {
         @Test
         @DisplayName("成功")
-        void success() {
+        void succeed() {
             Mockito.when(scheduleMapper.findByCalendarId("00000000-0000-0000-0000-000000000000")).thenReturn(List.of());
             assertEquals(List.of(), scheduleService.findByCalendarId("00000000-0000-0000-0000-000000000000"));
         }
@@ -58,7 +58,7 @@ public class ScheduleServiceTest {
 
         @Test
         @DisplayName("成功")
-        void success() {
+        void succeed() {
             ScheduleCreateRequest request = new ScheduleCreateRequest();
             Mockito.when(calendarService.auth(any())).thenReturn(true);
             Mockito.when(scheduleMapper.create(any())).thenReturn(true);
@@ -81,7 +81,7 @@ public class ScheduleServiceTest {
 
         @Test
         @DisplayName("成功")
-        void success() {
+        void succeed() {
             ScheduleCreateRequest request = new ScheduleCreateRequest();
             Mockito.when(calendarService.auth(any())).thenReturn(true);
             Mockito.when(scheduleMapper.update(any())).thenReturn(true);
