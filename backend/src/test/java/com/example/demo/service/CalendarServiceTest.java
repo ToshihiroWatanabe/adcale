@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.example.demo.mapper.CalendarMapper;
 import com.example.demo.model.Calendar;
-import com.example.demo.service.CalendarService;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
