@@ -48,6 +48,7 @@ schema.sqlのSQL文を実行して、テーブルを作成してください。
 MYSQL_URL|mysql://**ホスト名**:**ポート**/**データベース名**
 MYSQL_USERNAME|データベースに接続するユーザー名
 MYSQL_PASSWORD|データベースに接続するユーザーのパスワード
+TWITTER_BEARER_TOKEN|Twitter APIのBearer Token
 
 <!-- ### Spring Bootテスト用
 
@@ -57,11 +58,7 @@ MYSQL_TEST_URL|mysql://**ホスト名**:**ポート**/**データベース名**
 MYSQL_TEST_USERNAME|データベースに接続するユーザー名
 MYSQL_TEST_PASSWORD|データベースに接続するユーザーのパスワード -->
 
-### React用
 
-キー|説明
----|---
-REACT_APP_TWITTER_BEARER_TOKEN|Twitter APIのBearer Token
 
 ## Spring Bootアプリケーションの起動
 ```cd backend```
