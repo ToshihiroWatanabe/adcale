@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS schedules(
   -- 著者のURL
   author_url VARCHAR(255) NOT NULL,
   -- 著者のプロフィール画像のURL
-  profile_image_url VARCHAR(255),
+  profile_image_url VARCHAR(255) NOT NULL,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deleted_at DATETIME,
