@@ -25,6 +25,7 @@ import FetchService from "services/Fetch.service";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { useTheme } from "@emotion/react";
 import axios from "axios";
+import TwitterService from "services/Twitter.service";
 
 /** デフォルトの予定 */
 const defaultSchedule = {
@@ -214,38 +215,30 @@ const FormDialog = (props) => {
     setAuthorUrl(e.target.value);
     // TwitterのユーザーのURLの場合
     if (authorName === "" && e.target.value.match(/.*twitter.com\//)) {
-      // CORSで弾かれる
-      axios
-        .get(
-          "https://api.twitter.com/2/users/by/username/WataToshihiro?user.fields=profile_image_url",
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_TWITTER_BEARER_TOKEN}`,
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res);
-          if (res.status === 200) {
-            setAuthorName(res.data.name);
-          }
-        });
+      TwitterService.getUsersByUserName(
+        e.target.value.split("/").slice(-1)[0]
+      ).then((res) => {
+        console.log(res);
+        if (res.data.data?.name) {
+          setAuthorName(res.data.data.name);
+        }
+      });
     } else if (authorName === "" && e.target.value.match(/.+\..{2,}/)) {
-      // ページタイトルを取得する
-      setIsAuthorNameInFetching(true);
-      const url = e.target.value.match(/https?:\/\/.*/)
-        ? e.target.value.split("//")[1]
-        : e.target.value;
-      FetchService.fetch(url)
-        .then((res) => {
-          setIsAuthorNameInFetching(false);
-          if (res.status === 200 && res.data !== "") {
-            setAuthorName(res.data);
-          }
-        })
-        .catch(() => {
-          setIsAuthorNameInFetching(false);
-        });
+      // // ページタイトルを取得する
+      // setIsAuthorNameInFetching(true);
+      // const url = e.target.value.match(/https?:\/\/.*/)
+      //   ? e.target.value.split("//")[1]
+      //   : e.target.value;
+      // FetchService.fetch(url)
+      //   .then((res) => {
+      //     setIsAuthorNameInFetching(false);
+      //     if (res.status === 200 && res.data !== "") {
+      //       setAuthorName(res.data);
+      //     }
+      //   })
+      //   .catch(() => {
+      //     setIsAuthorNameInFetching(false);
+      //   });
     }
   };
 
