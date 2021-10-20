@@ -18,4 +18,5 @@ public class ScheduleCreateRequest {
     private String articleUrl;
     private String authorName;
     private String authorUrl;
+    private String profileImageUrl;
 }

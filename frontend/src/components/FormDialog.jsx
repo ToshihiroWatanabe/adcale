@@ -11,6 +11,7 @@ import {
   IconButton,
   Tooltip,
   useMediaQuery,
+  Box,
 } from "@mui/material";
 import { format, getDay } from "date-fns";
 import {
@@ -34,6 +35,7 @@ const defaultSchedule = {
   articleUrl: "",
   authorName: "",
   authorUrl: "",
+  profileImageUrl: "",
 };
 
 /**
@@ -47,6 +49,7 @@ const FormDialog = (props) => {
   const [articleUrl, setArticleUrl] = useState("");
   const [authorName, setAuthorName] = useState("");
   const [authorUrl, setAuthorUrl] = useState("");
+  const [profileImageUrl, setProfileImageUrl] = useState("");
   const filteredSchedules = props.schedules.filter((schedule) => {
     if (schedule.date === date) {
       return true;
@@ -124,6 +127,7 @@ const FormDialog = (props) => {
         articleUrl: articleUrl,
         authorName: authorName,
         authorUrl: authorUrl,
+        profileImageUrl: profileImageUrl,
       })
         .then((res) => {
           setIsInProceeding(false);
@@ -149,6 +153,7 @@ const FormDialog = (props) => {
         articleUrl: articleUrl,
         authorName: authorName,
         authorUrl: authorUrl,
+        profileImageUrl: profileImageUrl,
       })
         .then((res) => {
           setIsInProceeding(false);
@@ -212,33 +217,20 @@ const FormDialog = (props) => {
    */
   const onAuthorUrlChange = (e) => {
     setAuthorUrlHelperText("");
+    setProfileImageUrl("");
     setAuthorUrl(e.target.value);
     // TwitterのユーザーのURLの場合
     if (authorName === "" && e.target.value.match(/.*twitter.com\//)) {
+      setIsAuthorNameInFetching(true);
       TwitterService.getUsersByUserName(
         e.target.value.split("/").slice(-1)[0]
       ).then((res) => {
-        console.log(res);
+        setIsAuthorNameInFetching(false);
         if (res.data.data?.name) {
           setAuthorName(res.data.data.name);
+          setProfileImageUrl(res.data.data.profile_image_url);
         }
       });
-    } else if (authorName === "" && e.target.value.match(/.+\..{2,}/)) {
-      // // ページタイトルを取得する
-      // setIsAuthorNameInFetching(true);
-      // const url = e.target.value.match(/https?:\/\/.*/)
-      //   ? e.target.value.split("//")[1]
-      //   : e.target.value;
-      // FetchService.fetch(url)
-      //   .then((res) => {
-      //     setIsAuthorNameInFetching(false);
-      //     if (res.status === 200 && res.data !== "") {
-      //       setAuthorName(res.data);
-      //     }
-      //   })
-      //   .catch(() => {
-      //     setIsAuthorNameInFetching(false);
-      //   });
     }
   };
 
@@ -317,39 +309,47 @@ const FormDialog = (props) => {
               ),
             }}
           />
-          <TextField
-            margin="dense"
-            label={
-              isAuthorNameInFetching ? "著者の名前を取得中..." : "著者の名前"
-            }
-            type="text"
-            fullWidth
-            variant="standard"
-            value={authorName}
-            error={authorNameHelperText !== ""}
-            helperText={authorNameHelperText}
-            onChange={(e) => {
-              setAuthorNameHelperText("");
-              setAuthorName(e.target.value);
-            }}
-            InputProps={{
-              endAdornment: (
-                <Tooltip
-                  title="削除"
-                  style={{ display: authorName === "" ? "none" : "" }}
-                >
-                  <IconButton
-                    onClick={() => {
-                      setAuthorNameHelperText("");
-                      setAuthorName("");
-                    }}
+          <Box sx={{ display: "flex", alignItems: "flex-end" }}>
+            <img
+              src={profileImageUrl}
+              alt="Twitterプロフィール画像"
+              style={{ display: profileImageUrl === "" ? "none" : "" }}
+            />
+            <TextField
+              margin="dense"
+              label={
+                isAuthorNameInFetching ? "著者の名前を取得中..." : "著者の名前"
+              }
+              type="text"
+              fullWidth
+              variant="standard"
+              value={authorName}
+              error={authorNameHelperText !== ""}
+              helperText={authorNameHelperText}
+              onChange={(e) => {
+                setAuthorNameHelperText("");
+                setAuthorName(e.target.value);
+              }}
+              InputProps={{
+                endAdornment: (
+                  <Tooltip
+                    title="削除"
+                    style={{ display: authorName === "" ? "none" : "" }}
                   >
-                    <CancelIcon />
-                  </IconButton>
-                </Tooltip>
-              ),
-            }}
-          />
+                    <IconButton
+                      onClick={() => {
+                        setAuthorNameHelperText("");
+                        setAuthorName("");
+                        setProfileImageUrl("");
+                      }}
+                    >
+                      <CancelIcon />
+                    </IconButton>
+                  </Tooltip>
+                ),
+              }}
+            />
+          </Box>
           <TextField
             margin="dense"
             label="著者URL"
@@ -370,6 +370,7 @@ const FormDialog = (props) => {
                     onClick={() => {
                       setAuthorUrlHelperText("");
                       setAuthorUrl("");
+                      setProfileImageUrl("");
                     }}
                   >
                     <CancelIcon />
