@@ -78,6 +78,7 @@ const FormDialog = (props) => {
     setArticleUrl(schedule.articleUrl);
     setAuthorName(schedule.authorName);
     setAuthorUrl(schedule.authorUrl);
+    setProfileImageUrl(schedule.profileImageUrl);
   }, [props]);
 
   const handleClose = () => {

@@ -462,24 +462,54 @@ const Calendar = (props) => {
                               </IconButton>
                             )}
                             {/* 著者URL */}
-                            {schedule.authorUrl.match(/.*twitter.com\/.+/) && (
-                              <IconButton size="small">
-                                <a
-                                  href={
-                                    schedule.authorUrl.match(/https?:\/\/.*/)
-                                      ? schedule.authorUrl
-                                      : "http://" + schedule.authorUrl
-                                  }
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  style={{ color: "#1da1f2" }}
-                                >
-                                  <TwitterIcon
-                                    style={{ marginTop: "0.2rem" }}
-                                  />
-                                </a>
-                              </IconButton>
-                            )}
+                            {schedule.authorUrl.match(/.*twitter.com\/.+/) &&
+                              schedule.profileImageUrl === "" && (
+                                <IconButton size="small">
+                                  <a
+                                    href={
+                                      schedule.authorUrl.match(/https?:\/\/.*/)
+                                        ? schedule.authorUrl
+                                        : "http://" + schedule.authorUrl
+                                    }
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    style={{ color: "#1da1f2" }}
+                                  >
+                                    <TwitterIcon
+                                      style={{ marginTop: "0.2rem" }}
+                                    />
+                                  </a>
+                                </IconButton>
+                              )}
+                            {/* プロフィール画像 */}
+                            {schedule.authorUrl.match(/.*twitter.com\/.+/) &&
+                              schedule.profileImageUrl !== "" && (
+                                <IconButton size="small">
+                                  <a
+                                    href={
+                                      schedule.authorUrl.match(/https?:\/\/.*/)
+                                        ? schedule.authorUrl
+                                        : "http://" + schedule.authorUrl
+                                    }
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    <img
+                                      src={schedule.profileImageUrl}
+                                      alt="Twitterプロフィール画像"
+                                      style={{
+                                        display:
+                                          schedule.profileImageUrl === ""
+                                            ? "none"
+                                            : "",
+                                        width: "1.75rem",
+                                        height: "1.75rem",
+                                        marginTop: "0.2rem",
+                                      }}
+                                    />
+                                  </a>
+                                </IconButton>
+                              )}
                           </Fragment>
                         );
                       }
