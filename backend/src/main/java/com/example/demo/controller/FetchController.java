@@ -20,14 +20,18 @@ public class FetchController {
     /**
      * 与えられたURLのページタイトルを返します。
      * 
-     * @param url http(s)://を除いたURL
+     * @param url URL
      * @return
      */
     @GetMapping("")
     public String fetch(@RequestParam String url) {
+        // URLにhttp(s)://が付いていない場合は付ける
+        if (!url.matches("^https?://")) {
+            url = "http://" + url;
+        }
         try {
-            Document doc = Jsoup.connect("http://" + url).get();
-            Elements elements = doc.select("title");
+            Document doc = Jsoup.connect(url).get();
+            Elements elements = doc.select("head").select("title");
             return elements.text();
         } catch (IOException e) {
             e.printStackTrace();
