@@ -502,9 +502,10 @@ const Calendar = (props) => {
                                           schedule.profileImageUrl === ""
                                             ? "none"
                                             : "",
-                                        width: "1.75rem",
-                                        height: "1.75rem",
-                                        marginTop: "0.2rem",
+                                        width: "1.4rem",
+                                        height: "1.4rem",
+                                        marginTop: "0.31rem",
+                                        borderRadius: "1rem",
                                       }}
                                     />
                                   </a>

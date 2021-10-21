@@ -314,7 +314,10 @@ const FormDialog = (props) => {
             <img
               src={profileImageUrl}
               alt="Twitterプロフィール画像"
-              style={{ display: profileImageUrl === "" ? "none" : "" }}
+              style={{
+                display: profileImageUrl === "" ? "none" : "",
+                borderRadius: "1rem",
+              }}
             />
             <TextField
               margin="dense"
