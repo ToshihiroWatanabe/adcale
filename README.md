@@ -2,21 +2,15 @@
 
 エンジニアの情報発信イベントに使えそうなアドベントカレンダーを簡単に作成し、共有できるアプリです。
 
+![動作の様子](https://user-images.githubusercontent.com/79039863/138237668-0a14f45f-ac39-4998-8e66-cff61e7804fb.gif)
+
 ## [アプリへのアクセスはこちら](https://adcale.herokuapp.com/)
 
-カレンダー作成画面↓
+# 便利な機能
 
-![カレンダー作成画面](https://user-images.githubusercontent.com/79039863/136520609-a1b8a22e-939d-4936-b87f-b28ed6c10667.png)
-
-カレンダー閲覧・編集画面↓
-
-![カレンダー閲覧・編集画面](https://user-images.githubusercontent.com/79039863/136538311-06e23e8c-da13-46ba-8bbd-cd30efa5f482.png)
-
-予定編集フォームダイアログ↓
-
-![予定作成・編集フォームダイアログ](https://user-images.githubusercontent.com/79039863/136538328-8495394b-2de1-4513-9d5a-fd5d884db8b6.png)
-
-
+- URLをコピーして作成したカレンダーを共有できます！閲覧専用URLと、編集権限付きのURLの2種類があります。
+- 記事タイトルを入力していない状態で記事のURLを入力すると、ページタイトルが取得されて自動で入力されます。
+- 著者の名前を入力していない状態で著者のURLにTwitterのプロフィールのURLを入力すると、名前が自動で入力され、アイコンが表示されます。(Twitter APIを利用)
 
 # 主な使用技術
 
@@ -61,16 +55,32 @@ MYSQL_TEST_PASSWORD|データベースに接続するユーザーのパスワー
 
 
 ## Spring Bootアプリケーションの起動
-```cd backend```
 
-```mvn spring-boot:run```
+```
+cd backend
+```
+
+```
+mvn install
+```
+
+```
+mvn spring-boot:run
+```
 
 ## Reactアプリケーションの起動
-```cd frontend```
 
-```npm install```
+```
+cd frontend
+```
 
-```npm start```
+```
+npm install
+```
+
+```
+npm start
+```
 
 # 作者
 
