@@ -143,6 +143,7 @@ public class ScheduleMapperTest {
             schedule.setArticleUrl("");
             schedule.setAuthorName("");
             schedule.setAuthorUrl("");
+            schedule.setProfileImageUrl("");
             assertTrue(scheduleMapper.create(schedule));
         }
     }
@@ -173,6 +174,7 @@ public class ScheduleMapperTest {
             schedule.setArticleUrl("");
             schedule.setAuthorName("");
             schedule.setAuthorUrl("");
+            schedule.setProfileImageUrl("");
             assertTrue(scheduleMapper.update(schedule));
         }
     }

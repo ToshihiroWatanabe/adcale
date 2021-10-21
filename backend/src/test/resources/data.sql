@@ -26,7 +26,8 @@ INSERT INTO
     article_title,
     article_url,
     author_name,
-    author_url
+    author_url,
+    profile_image_url
   )
 VALUES(
     'abf09a97-58fa-bf51-2975-4544f4a5d770',
@@ -35,7 +36,8 @@ VALUES(
     '記事タイトル1',
     'https://example.com',
     '著者A',
-    'https://example.net'
+    'https://example.net',
+    ''
   );
 INSERT INTO
   schedules(
@@ -45,7 +47,8 @@ INSERT INTO
     article_title,
     article_url,
     author_name,
-    author_url
+    author_url,
+    profile_image_url
   )
 VALUES(
     '36328ff9-a84e-d1f7-5887-45a79cbb856a',
@@ -54,5 +57,6 @@ VALUES(
     '記事タイトル2',
     'https://example.com',
     '著者B',
-    'https://example.net'
+    'https://example.net',
+    ''
   );

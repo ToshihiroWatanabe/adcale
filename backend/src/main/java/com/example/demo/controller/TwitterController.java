@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import javax.websocket.server.PathParam;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/twitter")
 public class TwitterController {
 
-    @Value("${TWITTER_BEARER_TOKEN}")
+    @Value("${twitter.bearer.token}")
     private String TWITTER_BEARER_TOKEN;
 
     /**
