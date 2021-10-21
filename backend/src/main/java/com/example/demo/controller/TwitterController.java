@@ -2,7 +2,6 @@ package com.example.demo.controller;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/twitter")
 public class TwitterController {
 
-    @Value("${twitter.bearer.token}")
-    private String TWITTER_BEARER_TOKEN;
+    private String TWITTER_BEARER_TOKEN = System.getenv("TWITTER_BEARER_TOKEN");
 
     /**
      * ユーザーネームからユーザー情報を取得します。
