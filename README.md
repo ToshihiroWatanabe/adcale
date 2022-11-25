@@ -4,8 +4,6 @@
 
 ![動作の様子](https://user-images.githubusercontent.com/79039863/138237668-0a14f45f-ac39-4998-8e66-cff61e7804fb.gif)
 
-## [アプリへのアクセスはこちら](https://adcale.herokuapp.com/)
-
 # 便利な機能
 
 - URLをコピーして作成したカレンダーを共有できます！閲覧専用URLと、編集権限付きのURLの2種類があります。
